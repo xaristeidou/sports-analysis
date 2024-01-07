@@ -5,7 +5,7 @@ from ultralytics import YOLO
 model = YOLO("yolov8m-pose.pt")
 
 
-video_source = "assets/video_path.mp4"
+video_source = "assets/running.mp4"
 cap = cv2.VideoCapture(video_source)
 
 while cap.isOpened():
@@ -18,4 +18,13 @@ while cap.isOpened():
         )
 
         annotated_frame = results[0].plot()
-    
+
+        key = cv2.waitKey(1)
+
+        if key == 113:
+            break
+    else:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
